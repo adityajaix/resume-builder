@@ -1,0 +1,458 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Live Preview</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Form Panel -->
+        <div class="form-panel">
+            <div class="form-header">
+                <h1>Resume Builder</h1>
+                <p>Fill in your details to generate a professional resume</p>
+            </div>
+
+            <form id="resume-form" class="resume-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Personal Information</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Professional Title *</label>
+                            <input type="text" id="title" name="title" placeholder="Senior Software Engineer" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="john.doe@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="San Francisco, CA">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn</label>
+                            <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/in/johndoe">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="github">GitHub</label>
+                        <input type="url" id="github" name="github" placeholder="github.com/johndoe">
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Professional Summary</h2>
+                    <div class="form-group">
+                        <label for="summary">Summary</label>
+                        <textarea id="summary" name="summary" rows="4" placeholder="Results-driven Software Engineer with 8+ years of experience..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Work Experience</h2>
+                    <div id="experience-entries" class="dynamic-entries">
+                        <!-- Experience entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-experience">+ Add Position</button>
+                </div>
+
+                <!-- Education -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Education</h2>
+                    <div id="education-entries" class="dynamic-entries">
+                        <!-- Education entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-education">+ Add Education</button>
+                </div>
+
+                <!-- Skills -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Skills</h2>
+                    <div class="form-group">
+                        <label>Languages (comma-separated)</label>
+                        <input type="text" id="skills-languages" name="skills-languages" placeholder="JavaScript, TypeScript, Python, Java">
+                    </div>
+                    <div class="form-group">
+                        <label>Frontend (comma-separated)</label>
+                        <input type="text" id="skills-frontend" name="skills-frontend" placeholder="React, Vue.js, HTML5, CSS3">
+                    </div>
+                    <div class="form-group">
+                        <label>Backend (comma-separated)</label>
+                        <input type="text" id="skills-backend" name="skills-backend" placeholder="Node.js, Django, PostgreSQL, MongoDB">
+                    </div>
+                    <div class="form-group">
+                        <label>Cloud & DevOps (comma-separated)</label>
+                        <input type="text" id="skills-cloud" name="skills-cloud" placeholder="AWS, Docker, Kubernetes, CI/CD">
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Projects</h2>
+                    <div id="project-entries" class="dynamic-entries">
+                        <!-- Project entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-project">+ Add Project</button>
+                </div>
+
+                <!-- Certifications -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Certifications</h2>
+                    <div id="certification-entries" class="dynamic-entries">
+                        <!-- Certification entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-certification">+ Add Certification</button>
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="reset-form">Reset</button>
+                    <button type="button" class="btn btn-primary" id="print-resume">Print Resume</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+            <div class="preview-header">
+                <h2>Live Preview</h2>
+                <span class="preview-badge">Real-time</span>
+            </div>
+            <div class="preview-container">
+                <div class="resume-preview" id="resume-preview">
+                    <!-- Header Section -->
+                    <header class="header">
+                        <div class="header-content">
+                            <div class="header-left">
+                                <h1 class="name" id="preview-name">John Doe</h1>
+                                <p class="title" id="preview-title">Senior Software Engineer</p>
+                            </div>
+                            <div class="header-right">
+                                <div class="contact-info">
+                                    <p id="preview-email-container"><a href="mailto:john.doe@email.com" id="preview-email">john.doe@email.com</a></p>
+                                    <p id="preview-phone-container"><a href="tel:+1234567890" id="preview-phone">(123) 456-7890</a></p>
+                                    <p id="preview-location-container">San Francisco, CA</p>
+                                    <p id="preview-linkedin-container"><a href="https://linkedin.com/in/johndoe" target="_blank" id="preview-linkedin">linkedin.com/in/johndoe</a></p>
+                                    <p id="preview-github-container"><a href="https://github.com/johndoe" target="_blank" id="preview-github">github.com/johndoe</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Main Content -->
+                    <main class="main-content">
+                        <!-- Summary Section -->
+                        <section class="section summary-section" id="preview-summary-section">
+                            <h2 class="section-title">Professional Summary</h2>
+                            <p class="summary-text" id="preview-summary">
+                                Results-driven Software Engineer with 8+ years of experience in designing, developing, and deploying scalable web applications. 
+                                Expert in full-stack development with a strong focus on cloud architecture, microservices, and modern JavaScript frameworks. 
+                                Proven track record of leading cross-functional teams and delivering high-quality solutions that drive business growth.
+                            </p>
+                        </section>
+
+                        <!-- Experience Section -->
+                        <section class="section experience-section">
+                            <h2 class="section-title">Work Experience</h2>
+                            <div id="preview-experience">
+                                <!-- Experience preview will be updated dynamically -->
+                            </div>
+                        </section>
+
+                        <!-- Education Section -->
+                        <section class="section education-section">
+                            <h2 class="section-title">Education</h2>
+                            <div id="preview-education">
+                                <!-- Education preview will be updated dynamically -->
+                            </div>
+                        </section>
+                    </main>
+
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <!-- Skills Section -->
+                        <section class="section skills-section">
+                            <h2 class="section-title">Skills</h2>
+                            <div id="preview-skills">
+                                <!-- Skills preview will be updated dynamically -->
+                            </div>
+                        </section>
+
+                        <!-- Projects Section -->
+                        <section class="section projects-section">
+                            <h2 class="section-title">Projects</h2>
+                            <div id="preview-projects">
+                                <!-- Projects preview will be updated dynamically -->
+                            </div>
+                        </section>
+
+                        <!-- Certifications Section -->
+                        <section class="section certifications-section">
+                            <h2 class="section-title">Certifications</h2>
+                            <div id="preview-certifications">
+                                <!-- Certifications preview will be updated dynamically -->
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder - Live Preview</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Form Panel -->
+        <div class="form-panel">
+            <div class="form-header">
+                <h1>Resume Builder</h1>
+                <p>Fill in your details to generate a professional resume</p>
+            </div>
+
+            <form id="resume-form" class="resume-form">
+                <!-- Personal Information -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Personal Information</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="title">Professional Title *</label>
+                            <input type="text" id="title" name="title" placeholder="Senior Software Engineer" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="john.doe@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="San Francisco, CA">
+                        </div>
+                        <div class="form-group">
+                            <label for="linkedin">LinkedIn</label>
+                            <input type="url" id="linkedin" name="linkedin" placeholder="linkedin.com/in/johndoe">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="github">GitHub</label>
+                        <input type="url" id="github" name="github" placeholder="github.com/johndoe">
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Professional Summary</h2>
+                    <div class="form-group">
+                        <label for="summary">Summary</label>
+                        <textarea id="summary" name="summary" rows="4" placeholder="Results-driven Software Engineer with 8+ years of experience..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Work Experience -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Work Experience</h2>
+                    <div id="experience-entries" class="dynamic-entries">
+                        <!-- Experience entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-experience">+ Add Position</button>
+                </div>
+
+                <!-- Education -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Education</h2>
+                    <div id="education-entries" class="dynamic-entries">
+                        <!-- Education entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-education">+ Add Education</button>
+                </div>
+
+                <!-- Skills -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Skills</h2>
+                    <div class="form-group">
+                        <label>Languages (comma-separated)</label>
+                        <input type="text" id="skills-languages" name="skills-languages" placeholder="JavaScript, TypeScript, Python, Java">
+                    </div>
+                    <div class="form-group">
+                        <label>Frontend (comma-separated)</label>
+                        <input type="text" id="skills-frontend" name="skills-frontend" placeholder="React, Vue.js, HTML5, CSS3">
+                    </div>
+                    <div class="form-group">
+                        <label>Backend (comma-separated)</label>
+                        <input type="text" id="skills-backend" name="skills-backend" placeholder="Node.js, Django, PostgreSQL, MongoDB">
+                    </div>
+                    <div class="form-group">
+                        <label>Cloud & DevOps (comma-separated)</label>
+                        <input type="text" id="skills-cloud" name="skills-cloud" placeholder="AWS, Docker, Kubernetes, CI/CD">
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Projects</h2>
+                    <div id="project-entries" class="dynamic-entries">
+                        <!-- Project entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-project">+ Add Project</button>
+                </div>
+
+                <!-- Certifications -->
+                <div class="form-section">
+                    <h2 class="form-section-title">Certifications</h2>
+                    <div id="certification-entries" class="dynamic-entries">
+                        <!-- Certification entries will be added here -->
+                    </div>
+                    <button type="button" class="add-entry-btn" id="add-certification">+ Add Certification</button>
+                </div>
+
+                <!-- Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="reset-form">Reset</button>
+                    <button type="button" class="btn btn-primary" id="print-resume">Print Resume</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Preview Panel -->
+        <div class="preview-panel">
+            <div class="preview-header">
+                <h2>Live Preview</h2>
+                <span class="preview-badge">Real-time</span>
+            </div>
+            <div class="preview-container">
+                <div class="resume-preview" id="resume-preview">
+                    <!-- Header Section -->
+                    <header class="header">
+                        <div class="header-content">
+                            <div class="header-left">
+                                <h1 class="name" id="preview-name">John Doe</h1>
+                                <p class="title" id="preview-title">Senior Software Engineer</p>
+                            </div>
+                            <div class="header-right">
+                                <div class="contact-info">
+                                    <p id="preview-email-container"><a href="mailto:john.doe@email.com" id="preview-email">john.doe@email.com</a></p>
+                                    <p id="preview-phone-container"><a href="tel:+1234567890" id="preview-phone">(123) 456-7890</a></p>
+                                    <p id="preview-location-container">San Francisco, CA</p>
+                                    <p id="preview-linkedin-container"><a href="https://linkedin.com/in/johndoe" target="_blank" id="preview-linkedin">linkedin.com/in/johndoe</a></p>
+                                    <p id="preview-github-container"><a href="https://github.com/johndoe" target="_blank" id="preview-github">github.com/johndoe</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+
+                    <!-- Main Content -->
+                    <main class="main-content">
+                        <!-- Summary Section -->
+                        <section class="section summary-section" id="preview-summary-section">
+                            <h2 class="section-title">Professional Summary</h2>
+                            <p class="summary-text" id="preview-summary">
+                                Results-driven Software Engineer with 8+ years of experience in designing, developing, and deploying scalable web applications. 
+                                Expert in full-stack development with a strong focus on cloud architecture, microservices, and modern JavaScript frameworks. 
+                                Proven track record of leading cross-functional teams and delivering high-quality solutions that drive business growth.
+                            </p>
+                        </section>
+
+                        <!-- Experience Section -->
+                        <section class="section experience-section">
+                            <h2 class="section-title">Work Experience</h2>
+                            <div id="preview-experience">
+                                <!-- Experience preview will be updated dynamically -->
+                            </div>
+                        </section>
+
+                        <!-- Education Section -->
+                        <section class="section education-section">
+                            <h2 class="section-title">Education</h2>
+                            <div id="preview-education">
+                                <!-- Education preview will be updated dynamically -->
+                            </div>
+                        </section>
+                    </main>
+
+                    <!-- Sidebar -->
+                    <aside class="sidebar">
+                        <!-- Skills Section -->
+                        <section class="section skills-section">
+                            <h2 class="section-title">Skills</h2>
+                            <div id="preview-skills">
+                                <!-- Skills preview will be updated dynamically -->
+                            </div>
+                        </section>
+
+                        <!-- Projects Section -->
+                        <section class="section projects-section">
+                            <h2 class="section-title">Projects</h2>
+                            <div id="preview-projects">
+                                <!-- Projects preview will be updated dynamically -->
+                            </div>
+                        </section>
+
+                        <!-- Certifications Section -->
+                        <section class="section certifications-section">
+                            <h2 class="section-title">Certifications</h2>
+                            <div id="preview-certifications">
+                                <!-- Certifications preview will be updated dynamically -->
+                            </div>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+>>>>>>> b8f9742 (setp 2- simple start name and job title filed updates on header.)
+</html>

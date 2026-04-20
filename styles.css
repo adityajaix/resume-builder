@@ -1,0 +1,1138 @@
+<<<<<<< HEAD
+/* ========================================
+   Resume Template - Professional Styles
+   ======================================== */
+
+/* CSS Reset & Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #64748b;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --border-color: #e2e8f0;
+    --accent-bg: #eff6ff;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Layout */
+    --sidebar-width: 280px;
+    --container-max-width: 1100px;
+    --border-radius: 6px;
+    --line-height: 1.6;
+}
+
+html {
+    font-size: 16px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+}
+
+/* ========================================
+   Resume Container
+   ======================================== */
+
+.resume-container {
+    max-width: var(--container-max-width);
+    margin: var(--spacing-xl) auto;
+    background: var(--bg-primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr var(--sidebar-width);
+    gap: 0;
+}
+
+/* ========================================
+   Header Section
+   ======================================== */
+
+.header {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-xl) var(--spacing-2xl);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+}
+
+.header-left {
+    flex: 1;
+}
+
+.name {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.2;
+}
+
+.title {
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.header-right {
+    flex-shrink: 0;
+}
+
+.contact-info {
+    text-align: right;
+    font-size: var(--font-size-sm);
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.contact-info p {
+    margin-bottom: 2px;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.contact-info a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* ========================================
+   Main Content Area
+   ======================================== */
+
+.main-content {
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+
+.sidebar {
+    background: var(--bg-secondary);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    border-left: 1px solid var(--border-color);
+}
+
+/* ========================================
+   Section Styles
+   ======================================== */
+
+.section {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Sidebar Section Titles */
+.sidebar .section-title {
+    font-size: var(--font-size-base);
+    border-bottom-width: 1px;
+}
+
+/* ========================================
+   Summary Section
+   ======================================== */
+
+.summary-text {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* ========================================
+   Experience Section
+   ======================================== */
+
+.job {
+    margin-bottom: var(--spacing-lg);
+}
+
+.job:last-child {
+    margin-bottom: 0;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.job-title-company {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.job-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.company {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.job-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.location, .duration {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.job-responsibilities {
+    list-style: none;
+    padding-left: 0;
+}
+
+.job-responsibilities li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+.job-responsibilities li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* ========================================
+   Education Section
+   ======================================== */
+
+.education {
+    margin-bottom: var(--spacing-md);
+}
+
+.education:last-child {
+    margin-bottom: 0;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.degree-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.degree {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.school {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.education-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.education-extra {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ========================================
+   Skills Section
+   ======================================== */
+
+.skill-category {
+    margin-bottom: var(--spacing-md);
+}
+
+.skill-category:last-child {
+    margin-bottom: 0;
+}
+
+.skill-category-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.skill-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-list li {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    padding: 2px 0;
+}
+
+/* ========================================
+   Projects Section
+   ======================================== */
+
+.project {
+    margin-bottom: var(--spacing-md);
+}
+
+.project:last-child {
+    margin-bottom: 0;
+}
+
+.project-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.project-description {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ========================================
+   Certifications Section
+   ======================================== */
+
+.certification-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.certification-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.certification-list li:last-child {
+    margin-bottom: 0;
+}
+
+.certification-name {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.certification-org {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 900px) {
+    .resume-container {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+    }
+
+    .sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-right {
+        text-align: center;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .job-header,
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-details,
+    .education-details {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 1.5rem;
+    }
+
+    .name {
+        font-size: var(--font-size-2xl);
+    }
+
+    .title {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .resume-container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        grid-template-columns: 1fr var(--sidebar-width);
+    }
+
+    .header {
+        background: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 1.5rem 2rem;
+    }
+
+    .main-content {
+        padding: 1.5rem 2rem;
+    }
+
+    .sidebar {
+        padding: 1.5rem;
+        background: var(--bg-secondary) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Ensure links are visible in print */
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Remove any hover effects */
+    a:hover {
+        text-decoration: none;
+    }
+
+    /* Prevent page breaks inside sections */
+    .section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .job, .education, .project {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Adjust font sizes for print if needed */
+    .name {
+        font-size: 1.75rem;
+    }
+
+    /* Ensure proper contrast */
+    .job-responsibilities li::before {
+        color: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .section-title {
+        color: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .company, .school {
+        color: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   Page Break Helpers for Multi-Page Prints
+   ======================================== */
+
+@page {
+    size: letter;
+    margin: 0.5in;
+}
+
+/* Force sidebar to stay together */
+.sidebar {
+    break-inside: avoid;
+    page-break-inside: avoid;
+=======
+/* ========================================
+   Resume Template - Professional Styles
+   ======================================== */
+
+/* CSS Reset & Base Styles */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary-color: #2563eb;
+    --primary-dark: #1d4ed8;
+    --secondary-color: #64748b;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --border-color: #e2e8f0;
+    --accent-bg: #eff6ff;
+
+    /* Typography */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+
+    /* Spacing */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+
+    /* Layout */
+    --sidebar-width: 280px;
+    --container-max-width: 1100px;
+    --border-radius: 6px;
+    --line-height: 1.6;
+}
+
+html {
+    font-size: 16px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height);
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+    min-height: 100vh;
+}
+
+/* ========================================
+   Resume Container
+   ======================================== */
+
+.resume-container {
+    max-width: var(--container-max-width);
+    margin: var(--spacing-xl) auto;
+    background: var(--bg-primary);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr var(--sidebar-width);
+    gap: 0;
+}
+
+/* ========================================
+   Header Section
+   ======================================== */
+
+.header {
+    grid-column: 1 / -1;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: var(--spacing-xl) var(--spacing-2xl);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-xl);
+}
+
+.header-left {
+    flex: 1;
+}
+
+.name {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.2;
+}
+
+.title {
+    font-size: var(--font-size-lg);
+    font-weight: 400;
+    opacity: 0.9;
+}
+
+.header-right {
+    flex-shrink: 0;
+}
+
+.contact-info {
+    text-align: right;
+    font-size: var(--font-size-sm);
+    line-height: 1.8;
+    opacity: 0.95;
+}
+
+.contact-info p {
+    margin-bottom: 2px;
+}
+
+.contact-info a {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.contact-info a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* ========================================
+   Main Content Area
+   ======================================== */
+
+.main-content {
+    padding: var(--spacing-xl) var(--spacing-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+
+.sidebar {
+    background: var(--bg-secondary);
+    padding: var(--spacing-xl) var(--spacing-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+    border-left: 1px solid var(--border-color);
+}
+
+/* ========================================
+   Section Styles
+   ======================================== */
+
+.section {
+    margin-bottom: 0;
+}
+
+.section-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Sidebar Section Titles */
+.sidebar .section-title {
+    font-size: var(--font-size-base);
+    border-bottom-width: 1px;
+}
+
+/* ========================================
+   Summary Section
+   ======================================== */
+
+.summary-text {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    line-height: 1.7;
+    text-align: justify;
+}
+
+/* ========================================
+   Experience Section
+   ======================================== */
+
+.job {
+    margin-bottom: var(--spacing-lg);
+}
+
+.job:last-child {
+    margin-bottom: 0;
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+}
+
+.job-title-company {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.job-title {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.company {
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.job-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.location, .duration {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+}
+
+.job-responsibilities {
+    list-style: none;
+    padding-left: 0;
+}
+
+.job-responsibilities li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-xs);
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+    line-height: 1.6;
+}
+
+.job-responsibilities li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* ========================================
+   Education Section
+   ======================================== */
+
+.education {
+    margin-bottom: var(--spacing-md);
+}
+
+.education:last-child {
+    margin-bottom: 0;
+}
+
+.education-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.degree-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.degree {
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.school {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+.education-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.education-extra {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+/* ========================================
+   Skills Section
+   ======================================== */
+
+.skill-category {
+    margin-bottom: var(--spacing-md);
+}
+
+.skill-category:last-child {
+    margin-bottom: 0;
+}
+
+.skill-category-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.skill-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-list li {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    padding: 2px 0;
+}
+
+/* ========================================
+   Projects Section
+   ======================================== */
+
+.project {
+    margin-bottom: var(--spacing-md);
+}
+
+.project:last-child {
+    margin-bottom: 0;
+}
+
+.project-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.project-description {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+/* ========================================
+   Certifications Section
+   ======================================== */
+
+.certification-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.certification-list li {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: var(--spacing-sm);
+}
+
+.certification-list li:last-child {
+    margin-bottom: 0;
+}
+
+.certification-name {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.certification-org {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}
+
+/* ========================================
+   Responsive Design
+   ======================================== */
+
+@media (max-width: 900px) {
+    .resume-container {
+        grid-template-columns: 1fr;
+        max-width: 800px;
+    }
+
+    .sidebar {
+        border-left: none;
+        border-top: 1px solid var(--border-color);
+    }
+
+    .header-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header-right {
+        text-align: center;
+    }
+
+    .contact-info {
+        text-align: center;
+    }
+
+    .job-header,
+    .education-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .job-details,
+    .education-details {
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 1.5rem;
+    }
+
+    .name {
+        font-size: var(--font-size-2xl);
+    }
+
+    .title {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* ========================================
+   Print Styles
+   ======================================== */
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .resume-container {
+        max-width: 100%;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+        grid-template-columns: 1fr var(--sidebar-width);
+    }
+
+    .header {
+        background: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 1.5rem 2rem;
+    }
+
+    .main-content {
+        padding: 1.5rem 2rem;
+    }
+
+    .sidebar {
+        padding: 1.5rem;
+        background: var(--bg-secondary) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Ensure links are visible in print */
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+
+    /* Remove any hover effects */
+    a:hover {
+        text-decoration: none;
+    }
+
+    /* Prevent page breaks inside sections */
+    .section {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .job, .education, .project {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    /* Adjust font sizes for print if needed */
+    .name {
+        font-size: 1.75rem;
+    }
+
+    /* Ensure proper contrast */
+    .job-responsibilities li::before {
+        color: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .section-title {
+        color: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .company, .school {
+        color: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ========================================
+   Page Break Helpers for Multi-Page Prints
+   ======================================== */
+
+@page {
+    size: letter;
+    margin: 0.5in;
+}
+
+/* Force sidebar to stay together */
+.sidebar {
+    break-inside: avoid;
+    page-break-inside: avoid;
+>>>>>>> b8f9742 (setp 2- simple start name and job title filed updates on header.)
+}
