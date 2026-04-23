@@ -1,5 +1,5 @@
 /* ========================================
-   Resume Template - Professional Styles
+   Resume Template - A4 Page Simulation
    ======================================== */
 
 /* CSS Reset & Base Styles */
@@ -18,7 +18,7 @@
     --text-secondary: #475569;
     --text-muted: #94a3b8;
     --bg-primary: #ffffff;
-    --bg-secondary: #f8fafc;
+    --bg-secondary: #f1f5f9;
     --border-color: #e2e8f0;
     --accent-bg: #eff6ff;
 
@@ -45,6 +45,10 @@
     --container-max-width: 1100px;
     --border-radius: 6px;
     --line-height: 1.6;
+
+    /* A4 Dimensions */
+    --a4-width: 210mm;
+    --a4-height: 297mm;
 }
 
 html {
@@ -63,19 +67,210 @@ body {
 }
 
 /* ========================================
-   Resume Container
+   Edit Toggle Button
    ======================================== */
 
-.resume-container {
-    max-width: var(--container-max-width);
-    margin: var(--spacing-xl) auto;
-    background: var(--bg-primary);
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+.edit-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
     border-radius: var(--border-radius);
-    overflow: hidden;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    transition: all 0.3s ease;
+}
+
+.edit-toggle:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.4);
+}
+
+.toggle-icon {
+    font-size: 18px;
+}
+
+.edit-toggle.active {
+    background: #16a34a;
+}
+
+.edit-toggle.active:hover {
+    background: #15803d;
+}
+
+/* ========================================
+   Edit Panel (Collapsible)
+   ======================================== */
+
+.edit-panel {
+    position: fixed;
+    top: 0;
+    left: -350px;
+    width: 320px;
+    height: 100vh;
+    z-index: 999;
+    background: var(--bg-primary);
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1);
+    transition: left 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-panel.open {
+    left: 0;
+}
+
+.edit-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-lg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.edit-panel-header h2 {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.close-panel {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--bg-secondary);
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+.close-panel:hover {
+    background: var(--border-color);
+}
+
+.edit-panel-content {
+    padding: var(--spacing-lg);
+    flex: 1;
+    overflow-y: auto;
+}
+
+.edit-instructions {
+    background: var(--accent-bg);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+}
+
+.edit-instructions p {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.edit-instructions ul {
+    padding-left: var(--spacing-lg);
+}
+
+.edit-instructions li {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.edit-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.btn {
+    padding: 12px 20px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-reset {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+}
+
+.btn-reset:hover {
+    background: var(--border-color);
+}
+
+.btn-print {
+    background: var(--primary-color);
+    color: white;
+}
+
+.btn-print:hover {
+    background: var(--primary-dark);
+}
+
+/* ========================================
+   Page Container - A4 Simulation
+   ======================================== */
+
+.page-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* A4 Page */
+.a4-page {
+    width: var(--a4-width);
+    min-height: var(--a4-height);
+    background: var(--bg-primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     display: grid;
     grid-template-columns: 1fr var(--sidebar-width);
     gap: 0;
+    overflow: hidden;
+}
+
+/* Edit Mode Styles */
+.a4-page.editing [contenteditable="true"] {
+    outline: 1px dashed transparent;
+    transition: outline-color 0.2s ease, background-color 0.2s ease;
+    border-radius: 2px;
+}
+
+.a4-page.editing [contenteditable="true"]:hover {
+    outline-color: var(--primary-color);
+    background-color: rgba(37, 99, 235, 0.02);
+}
+
+.a4-page.editing [contenteditable="true"]:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+    background-color: rgba(37, 99, 235, 0.05);
+}
+
+/* Placeholder for empty editable fields */
+[contenteditable="true"]:empty::before {
+    content: attr(data-placeholder);
+    color: var(--text-muted);
+    font-style: italic;
 }
 
 /* ========================================
@@ -137,7 +332,6 @@ body {
 
 .contact-info a:hover {
     opacity: 0.8;
-    text-decoration: underline;
 }
 
 /* ========================================
@@ -419,10 +613,17 @@ body {
    Responsive Design
    ======================================== */
 
+@media (max-width: 1000px) {
+    .a4-page {
+        width: 100%;
+        max-width: var(--a4-width);
+        min-height: auto;
+    }
+}
+
 @media (max-width: 900px) {
-    .resume-container {
+    .a4-page {
         grid-template-columns: 1fr;
-        max-width: 800px;
     }
 
     .sidebar {
@@ -468,23 +669,45 @@ body {
     .title {
         font-size: var(--font-size-base);
     }
+
+    .page-container {
+        padding: 20px 10px;
+    }
+
+    .edit-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 10px 14px;
+    }
+
+    .toggle-text {
+        display: none;
+    }
 }
 
 /* ========================================
    Print Styles
    ======================================== */
-
 @media print {
     body {
         background: white;
     }
 
-    .resume-container {
-        max-width: 100%;
-        margin: 0;
+    .edit-toggle,
+    .edit-panel {
+        display: none !important;
+    }
+
+    .page-container {
+        padding: 0;
+    }
+
+    .a4-page {
         box-shadow: none;
-        border-radius: 0;
-        grid-template-columns: 1fr var(--sidebar-width);
+        display: grid !important;
+        grid-template-columns: 1fr var(--sidebar-width) !important;
+        width: 210mm !important;
+        min-height: 297mm !important;
     }
 
     .header {
@@ -492,10 +715,12 @@ body {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
         padding: 1.5rem 2rem;
+        grid-column: 1 / -1 !important;
     }
 
     .main-content {
         padding: 1.5rem 2rem;
+        grid-column: 1 !important;
     }
 
     .sidebar {
@@ -503,41 +728,23 @@ body {
         background: var(--bg-secondary) !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+        grid-column: 2 !important;
     }
 
-    /* Ensure links are visible in print */
+    .main-content, .sidebar {
+        overflow: visible !important;
+    }
+
+    [contenteditable="true"] {
+        outline: none !important;
+        background: none !important;
+    }
+
     a {
         text-decoration: none;
         color: inherit;
     }
 
-    /* Remove any hover effects */
-    a:hover {
-        text-decoration: none;
-    }
-
-    /* Prevent page breaks inside sections */
-    .section {
-        break-inside: avoid;
-        page-break-inside: avoid;
-    }
-
-    .job, .education, .project {
-        break-inside: avoid;
-        page-break-inside: avoid;
-    }
-
-    /* Adjust font sizes for print if needed */
-    .name {
-        font-size: 1.75rem;
-    }
-
-    /* Ensure proper contrast */
-    .job-responsibilities li::before {
-        color: var(--primary-color) !important;
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-    }
 
     .section-title {
         color: var(--primary-color) !important;
@@ -545,24 +752,40 @@ body {
         print-color-adjust: exact;
     }
 
+    .section-title + * {
+        break-before: avoid;
+        page-break-before: avoid;
+    }
+
+
     .company, .school {
         color: var(--primary-color) !important;
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
     }
-}
 
-/* ========================================
-   Page Break Helpers for Multi-Page Prints
-   ======================================== */
+    .job-responsibilities li::before {
+        color: var(--primary-color) !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .name { font-size: 1.75rem; }
+
+    /* Page break control */
+    .job, .education, .project,
+    .section, .job-responsibilities li,
+    .degree-info, .education-header {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .a4-page {
+        min-height: auto !important;  /* remove forced height */
+    }
+}
 
 @page {
-    size: letter;
-    margin: 0.5in;
-}
-
-/* Force sidebar to stay together */
-.sidebar {
-    break-inside: avoid;
-    page-break-inside: avoid;
+    size: A4;
+    margin: 15mm;
 }
