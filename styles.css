@@ -225,6 +225,40 @@ body {
     background: var(--primary-dark);
 }
 
+.donation-section {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: var(--accent-bg);
+    border-radius: var(--border-radius);
+    text-align: center;
+    border: 1px dashed var(--primary-color);
+}
+
+.donation-text {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.donation-subtext {
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    margin-bottom: var(--spacing-md);
+}
+
+.upi-qr {
+    width: 150px;
+    height: 150px;
+    border-radius: var(--border-radius);
+    display: block;
+    margin: 0 auto var(--spacing-sm);
+}
+
+/* .upi-id {
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+} */
+
 /* ========================================
    Page Container - A4 Simulation
    ======================================== */
